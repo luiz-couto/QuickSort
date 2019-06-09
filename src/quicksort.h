@@ -19,6 +19,8 @@ class QuickSort{
         void qsort(int left_index, int right_index);
         void qsort_med_tres(int left_index, int right_index);
         void qsort_primeiro(int left_index, int right_index);
+        void insertion_sort(int left_index,int right_index);
+        void qsort_ten_percent(int left_index, int right_index);
         int partition(int i, int j);
         void Print();
 

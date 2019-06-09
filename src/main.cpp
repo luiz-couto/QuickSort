@@ -28,5 +28,9 @@ int main()
     QuickSort q3(array,n);
     q3.Print();
     q3.qsort_med_tres(0,n-1);
+    printf("----------------------------------\n");
+    QuickSort q4(array,n);
+    q4.Print();
+    q4.qsort_ten_percent(0,n-1);
     return 0; 
 } 
