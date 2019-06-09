@@ -6,14 +6,24 @@
 #include <iostream>
 #include <sstream>
 #include <stdio.h>
+#include <stdlib.h> 
 
 #include "quicksort.h"
 
 using namespace std;
+
+void randomArray(int *array,int n){
+    
+    for (int i = 0;i<n;i++){
+        array[i] = rand() % 100;
+    }
+
+}
  
 int main() 
 { 
-    int array[] = {10, 7, 8, 9, 1, 5}; 
+    int array[10]; 
+    randomArray(array,10);
     int n = sizeof(array)/sizeof(array[0]);
    
 

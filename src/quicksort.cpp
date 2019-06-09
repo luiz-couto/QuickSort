@@ -1,6 +1,7 @@
 #include "quicksort.h"
 #include <iostream>
 #include <sstream>
+#include <stdlib.h> 
 
 QuickSort::QuickSort(int array[],int n){
 
@@ -141,21 +142,21 @@ void QuickSort::qsort_ten_percent(int left_index, int right_index){
         
     }
     
-    if(j-left_index < this->number_of_elements/2){
+    if(j-left_index+1 < this->number_of_elements/10){
         this->insertion_sort(left_index,j);
     }
         
     else{
-        qsort_med_tres(left_index,j);
+        qsort_ten_percent(left_index,j);
     }
 
-    printf("\n%i\n",right_index-i);
-    if(right_index-i < this->number_of_elements/2){
+    
+    if(right_index-i+1 < this->number_of_elements/10){
         this->insertion_sort(i,right_index);
     }
         
     else{
-        qsort_med_tres(i,right_index);
+        qsort_ten_percent(i,right_index);
     }
         
     
