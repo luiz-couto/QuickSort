@@ -44,8 +44,9 @@ void QuickSort::qsort(int left_index, int right_index){
             this->swap(&this->array[i],&this->array[j]);
             i++;
             j--;
+            this->Print();
         }
-        this->Print();
+        
     }
 
     qsort(left_index,j);
@@ -55,7 +56,77 @@ void QuickSort::qsort(int left_index, int right_index){
 
 void QuickSort::qsort_med_tres(int left_index, int right_index){
 
+    int i,j,pivot;
+    if(left_index >= right_index)
+        return;
+    i = left_index;
+    j = right_index;
+
+    int number1 = this->array[left_index];
+    int number2 = this->array[(left_index+right_index)/2];
+    int number3 = this->array[(right_index)]; 
+
+    if (number2 > number1 && number1 > number3 || number3 > number1 && number1 > number2)
+        pivot = number1;
+    else if (number1 > number2 && number2 > number3 || number3 > number2 && number2 > number1)
+        pivot = number2;
+    else if (number1 > number3 && number3 > number2 || number2 > number3 && number3 > number1)
+        pivot = number3;
+    else if(number1 == number2)
+        pivot = number1;
+    else if(number2 == number3)
+        pivot = number2;
+    else if(number1 == number3)
+        pivot = number1;
+
     
+    //partition
+    while(i<=j){
+        while(this->array[i] < pivot)
+            i++;
+        while(this->array[j] > pivot)
+            j--;
+        if(i <= j){
+            this->swap(&this->array[i],&this->array[j]);
+            i++;
+            j--;
+            this->Print();
+        }
+        
+    }
+
+    qsort_med_tres(left_index,j);
+    qsort_med_tres(i,right_index);
+
+}
+
+void QuickSort::qsort_primeiro(int left_index, int right_index){
+
+    int i,j,pivot;
+    if(left_index >= right_index)
+        return;
+    i = left_index;
+    j = right_index;
+
+    pivot = this->array[left_index];
+                
+    //partition
+    while(i<=j){
+        while(this->array[i] < pivot)
+            i++;
+        while(this->array[j] > pivot)
+            j--;
+        if(i <= j){
+            this->swap(&this->array[i],&this->array[j]);
+            i++;
+            j--;
+            this->Print();
+        }
+        
+    }
+
+    qsort_primeiro(left_index,j);
+    qsort_primeiro(i,right_index);
 
 }
 
