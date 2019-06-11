@@ -20,11 +20,10 @@ void RandomArray(int *array,int n){
     for (int i=0;i<n;i++){
         
         array[i] = rand() % aux;
-        printf("%i",array[i]);
+        
         
     }
     
-
 }
 
 void ArrayCres(int *array, int n){
@@ -51,13 +50,14 @@ int main(int argc, char *argv[])
     std::string var = argv[1];
     std::string tipo = argv[2];
     int tamanho = std::stoi(argv[3]);
-    bool p;
+    int p;
     
-    if(argv[4] == "-p"){
-        p = true;
+    if(argc == 5){
+        p = 1;
     }else{
-        p = false;
+        p = 0;
     }
+    
     
     //int n;
     int array[tamanho];
