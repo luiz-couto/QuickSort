@@ -5,18 +5,25 @@
 
 #include <iostream>
 #include <sstream>
+#include <string>
 #include <stdio.h>
-#include <stdlib.h> 
+#include <stdlib.h>
+#include <chrono> 
 
 #include "quicksort.h"
 
 using namespace std;
+using namespace std::chrono;
 
 void RandomArray(int *array,int n){
-    
+    int aux = 2*n;
     for (int i=0;i<n;i++){
-        array[i] = rand() % 2*n;
+        
+        array[i] = rand() % aux;
+        printf("%i",array[i]);
+        
     }
+    
 
 }
 
@@ -33,6 +40,7 @@ void ArrayDecres(int *array, int n){
     for (int i=n-1;i>=0;i--){
         array[j] = i;
         j++;
+        
     }
 
 }
@@ -40,7 +48,9 @@ void ArrayDecres(int *array, int n){
 int main(int argc, char *argv[]) 
 { 
     
-    printf("%s %s %s %s\n",argv[1],argv[2],argv[3],argv[4]);
+    std::string var = argv[1];
+    std::string tipo = argv[2];
+    int tamanho = std::stoi(argv[3]);
     bool p;
     
     if(argv[4] == "-p"){
@@ -49,32 +59,59 @@ int main(int argc, char *argv[])
         p = false;
     }
     
+    //int n;
+    int array[tamanho];
     
     
-    
-    
-    int array[10]; 
-    ArrayDecres(array,10);
-    int n = sizeof(array)/sizeof(array[0]);
+    auto start = std::chrono::high_resolution_clock::now();
+    if(tipo == "Ale"){
+        RandomArray(array,tamanho);
+        //n = sizeof(array)/sizeof(array[0]);
 
-    QuickSort q(array,n,p);
-    if(p == true)
-        q.Print();
-    q.qsort(0,n-1);
-    //printf("----------------------------------\n");
-    QuickSort q2(array,n,p);
-    if(p == true)
-        q2.Print();
-    q2.qsort_primeiro(0,n-1);
-    //printf("----------------------------------\n");
-    QuickSort q3(array,n,p);
-    if(p == true)
-        q3.Print();
-    q3.qsort_med_tres(0,n-1);
-    //printf("----------------------------------\n");
-    QuickSort q4(array,n,p);
-    if(p == true)
-        q4.Print();
-    //q4.qsort_ten_percent(0,n-1);
+    }
+    else if(tipo == "OrdC"){
+        ArrayCres(array,tamanho);
+        //n = sizeof(array)/sizeof(array[0]);
+    }
+    else if(tipo == "OrdD"){
+        ArrayDecres(array,tamanho);
+        //n = sizeof(array)/sizeof(array[0]);
+        
+    }
+
+    
+
+    QuickSort q(array,tamanho,p);
+    //q.Print();
+
+    if(var == "QC"){
+        q.qsort(0,tamanho-1);
+    }
+    else if(var == "QM3"){
+        q.qsort_med_tres(0,tamanho-1);
+    }
+    else if(var == "QPE"){
+        q.qsort_primeiro(0,tamanho-1);
+    }
+    else if(var == "QI1"){
+        q.qsort_one_percent(0,tamanho-1);
+    }
+    else if(var == "QI5"){
+        q.qsort_five_percent(0,tamanho-1);
+    }
+    else if(var == "QI10"){
+        q.qsort_ten_percent(0,tamanho-1);
+    }     
+
+    std::cout << var << " " << tipo << " " << tamanho << " ";
+    q.PrintComp();
+    q.PrintMov();
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start); 
+    cout << duration.count();
+    printf("\n");
+    
+    
+    
     return 0; 
 } 

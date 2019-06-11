@@ -374,3 +374,11 @@ void QuickSort::Print(){
     printf("\n");
 }
 
+void QuickSort::PrintComp(){
+    printf("%i ",this->n_de_comp);
+}
+
+void QuickSort::PrintMov(){
+    printf("%i ",this->n_de_movim);
+}
+
