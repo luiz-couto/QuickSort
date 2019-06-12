@@ -1,7 +1,8 @@
 #include "quicksort.h"
 #include <iostream>
 #include <sstream>
-#include <stdlib.h> 
+#include <stdlib.h>
+#include "pilha.h" 
 
 QuickSort::QuickSort(int array[],int n,int p){
 
@@ -360,6 +361,13 @@ void QuickSort::qsort_primeiro(int left_index, int right_index){
 
     qsort_primeiro(left_index,j);
     qsort_primeiro(i,right_index);
+
+}
+
+void QuickSort::qsort_non_recursive(int left_index, int right_index){
+
+  
+
 
 }
 

@@ -3,6 +3,19 @@
 
 using namespace std;
 
+struct Item
+{
+  int ini;
+  int end;
+
+  Item() {}
+  Item(int ini, int end)
+  {
+    this->ini = ini;
+    this->end = end;
+  }
+};
+
 
 class QuickSort{
 
@@ -26,6 +39,7 @@ class QuickSort{
         void qsort_ten_percent(int left_index, int right_index);
         void qsort_five_percent(int left_index, int right_index);
         void qsort_one_percent(int left_index, int right_index);
+        void qsort_non_recursive(int left_index, int right_index);
         int partition(int i, int j);
         void Print();
         void PrintComp();
