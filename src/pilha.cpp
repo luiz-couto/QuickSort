@@ -1,5 +1,6 @@
 #include <memory>
 #include "pilha.h"
+#include "quicksort.h"
 
 Pilha::Pilha(){
 
@@ -13,10 +14,14 @@ Pilha::Pilha(){
 
 }
 
-void Pilha::Push(int value){
+Pilha::~Pilha(){
+    
+}
+
+void Pilha::Push(Item i){
 
     node *new_node = new node;
-    new_node->value = value;
+    new_node->item = i;
 
     new_node->next = this->tail;
     new_node->previous = this->tail->previous;
@@ -27,7 +32,7 @@ void Pilha::Push(int value){
     this->lenght++;
 
 }
-int Pilha::Retira(){
+Item Pilha::Retira(){
 
     node *nod = this->tail->previous;
     node *previous_node = nod->previous;
@@ -35,12 +40,12 @@ int Pilha::Retira(){
     previous_node->next = this->tail;
     this->tail->previous = previous_node;
 
-    int value = nod->value;
+    Item i = nod->item;
 
     delete nod;
 
     this->lenght--;
-    return value;
+    return i;
 
 }
 

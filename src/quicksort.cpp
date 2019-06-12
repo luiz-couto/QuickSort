@@ -364,8 +364,52 @@ void QuickSort::qsort_primeiro(int left_index, int right_index){
 
 }
 
-void QuickSort::qsort_non_recursive(int left_index, int right_index){
+void QuickSort::qsort_non_recursive(int ini, int end){
 
+    int i,j,pivot;
+    Pilha pilha = Pilha();
+    pilha.Push(Item(ini,end));
+
+    do
+    {
+        if(end > ini){
+            i = ini;
+            j = end;
+            pivot = array[(ini + end) / 2];
+            //partition
+            while(i<=j){
+                while(this->array[i] < pivot)
+                    i++;
+                    this->n_de_comp++;
+                while(this->array[j] > pivot)
+                    j--;
+                    this->n_de_comp++;
+                if(i <= j){
+                    this->swap(&this->array[i],&this->array[j]);
+                    i++;
+                    j--;
+                    if(this->p == true)
+                        this->Print();
+                }
+        
+            }
+    
+            if((j - ini) > (end - i)){
+                pilha.Push(Item(ini,j));
+                ini = i;
+            }else{
+                pilha.Push(Item(i,end));
+                end = j;
+            }
+        }else{
+            Item item = pilha.Retira();
+            end = item.end;
+            ini = item.ini;
+        }
+
+
+    } while (!pilha.is_empty());
+    
   
 
 

@@ -4,11 +4,25 @@
 #include <iostream>
 #include <sstream>
 
+
 using namespace std;
+
+struct Item
+{
+  int ini;
+  int end;
+
+  Item() {}
+  Item(int ini, int end)
+  {
+    this->ini = ini;
+    this->end = end;
+  }
+};
 
 struct node{
 
-    int value;
+    Item item;
     node *next;
     node *previous;
 
@@ -24,8 +38,8 @@ class Pilha{
     public:
         Pilha();
         ~Pilha();
-        void Push(int value);
-        int Retira();
+        void Push(Item i);
+        Item Retira();
         bool is_empty();
 };
 

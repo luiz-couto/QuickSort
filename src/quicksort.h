@@ -3,19 +3,6 @@
 
 using namespace std;
 
-struct Item
-{
-  int ini;
-  int end;
-
-  Item() {}
-  Item(int ini, int end)
-  {
-    this->ini = ini;
-    this->end = end;
-  }
-};
-
 
 class QuickSort{
 

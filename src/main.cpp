@@ -101,6 +101,9 @@ int main(int argc, char *argv[])
     }
     else if(var == "QI10"){
         q.qsort_ten_percent(0,tamanho-1);
+    }
+    else if(var == "QNR"){
+        q.qsort_non_recursive(0,tamanho-1);
     }     
 
     std::cout << var << " " << tipo << " " << tamanho << " ";
