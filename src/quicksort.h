@@ -28,6 +28,7 @@ class QuickSort{
         void qsort_one_percent(int left_index, int right_index);
         void qsort_non_recursive(int left_index, int right_index);
         int partition(int i, int j);
+        int get_Comp();
         void Print();
         void PrintComp();
         void PrintMov();

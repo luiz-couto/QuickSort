@@ -20,6 +20,7 @@ QuickSort::QuickSort(int array[],int n,int p){
 
 QuickSort::~QuickSort(){
 
+    delete [] this->array;
 }
 
 void QuickSort::swap(int *a,int *b){
@@ -433,4 +434,6 @@ void QuickSort::PrintComp(){
 void QuickSort::PrintMov(){
     printf("%i ",this->n_de_movim);
 }
-
+int QuickSort::get_Comp(){
+    return this->n_de_comp;
+}
