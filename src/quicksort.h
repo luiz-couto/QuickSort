@@ -10,8 +10,8 @@ class QuickSort{
 
         int *array;
         int number_of_elements;
-        int n_de_comp;
-        int n_de_movim;
+        unsigned long long n_de_comp;
+        unsigned long long n_de_movim;
         bool p;
     
     public:
@@ -29,6 +29,7 @@ class QuickSort{
         void qsort_non_recursive(int left_index, int right_index);
         int partition(int i, int j);
         int get_Comp();
+        int get_Mod();
         void Print();
         void PrintComp();
         void PrintMov();

@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include "pilha.h" 
 
+// Construtor
 QuickSort::QuickSort(int array[],int n,int p){
 
     this->n_de_comp = 0;
@@ -18,11 +19,13 @@ QuickSort::QuickSort(int array[],int n,int p){
     
 }
 
+// Destrutor
 QuickSort::~QuickSort(){
 
     delete [] this->array;
 }
 
+// Troca de elementos em um vetor
 void QuickSort::swap(int *a,int *b){
 
     int t = *a; 
@@ -31,6 +34,7 @@ void QuickSort::swap(int *a,int *b){
     this->n_de_movim++; 
 }
 
+// Qsort clássico
 void QuickSort::qsort(int left_index, int right_index){
 
     
@@ -64,6 +68,7 @@ void QuickSort::qsort(int left_index, int right_index){
 
 }
 
+// Qsort mediana de três
 void QuickSort::qsort_med_tres(int left_index, int right_index){
 
     int i,j,pivot;
@@ -113,6 +118,7 @@ void QuickSort::qsort_med_tres(int left_index, int right_index){
 
 }
 
+// Qsort + insertion sort 10%
 void QuickSort::qsort_ten_percent(int left_index, int right_index){
 
     int i,j,pivot;
@@ -178,6 +184,7 @@ void QuickSort::qsort_ten_percent(int left_index, int right_index){
 
 }
 
+// Qsort + insertion sort 5%
 void QuickSort::qsort_five_percent(int left_index, int right_index){
 
     int i,j,pivot;
@@ -241,6 +248,7 @@ void QuickSort::qsort_five_percent(int left_index, int right_index){
         
 }
 
+// Qsort + insertion sort 1%
 void QuickSort::qsort_one_percent(int left_index, int right_index){
 
     int i,j,pivot;
@@ -285,7 +293,7 @@ void QuickSort::qsort_one_percent(int left_index, int right_index){
         
     }
     
-    if(j-left_index+1 < this->number_of_elements/10){
+    if(j-left_index+1 < this->number_of_elements/100){
         this->insertion_sort(left_index,j);
     }
         
@@ -294,7 +302,7 @@ void QuickSort::qsort_one_percent(int left_index, int right_index){
     }
 
     
-    if(right_index-i+1 < this->number_of_elements/10){
+    if(right_index-i+1 < this->number_of_elements/100){
         this->insertion_sort(i,right_index);
     }
         
@@ -306,7 +314,7 @@ void QuickSort::qsort_one_percent(int left_index, int right_index){
 
 }
 
-
+// Insertion Sort
 void QuickSort::insertion_sort(int left_index,int right_index)
 {
     if(left_index >= right_index)
@@ -314,14 +322,17 @@ void QuickSort::insertion_sort(int left_index,int right_index)
     
     int i, j, tmp;
     
+    this->n_de_comp++;
     for(i = left_index; i < right_index+1; i++)
-    {
+    {   
+    
         tmp = this->array[i];
+        this->n_de_comp++;
         for(j = i-1; j >= 0 && tmp < this->array[j]; j--)
         {   
-            this->array[j+1] = this->array[j];
             this->n_de_comp++;
-            
+            this->array[j+1] = this->array[j];
+            this->n_de_movim++;
         }
         this->array[j+1] = tmp;
         this->n_de_movim++;
@@ -332,6 +343,7 @@ void QuickSort::insertion_sort(int left_index,int right_index)
     
 }
 
+// Qsort com pivô no primeiro elemento
 void QuickSort::qsort_primeiro(int left_index, int right_index){
 
     int i,j,pivot;
@@ -365,6 +377,7 @@ void QuickSort::qsort_primeiro(int left_index, int right_index){
 
 }
 
+// Qsort não recursivo
 void QuickSort::qsort_non_recursive(int ini, int end){
 
     int i,j,pivot;
@@ -416,6 +429,7 @@ void QuickSort::qsort_non_recursive(int ini, int end){
 
 }
 
+// Abaixo funções de Print e Get (retorno de elementos da classe)
 void QuickSort::Print(){
     int i;
     //this->swap(&this->array[0],&this->array[3]);
@@ -428,12 +442,15 @@ void QuickSort::Print(){
 }
 
 void QuickSort::PrintComp(){
-    printf("%i ",this->n_de_comp);
+    cout << this->n_de_comp << " ";
 }
 
 void QuickSort::PrintMov(){
-    printf("%i ",this->n_de_movim);
+    cout << this->n_de_movim << " ";
 }
 int QuickSort::get_Comp(){
     return this->n_de_comp;
+}
+int QuickSort::get_Mod(){
+    return this->n_de_movim;
 }

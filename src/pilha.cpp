@@ -2,6 +2,7 @@
 #include "pilha.h"
 #include "quicksort.h"
 
+// Construtor
 Pilha::Pilha(){
 
     this->head = new node;
@@ -14,10 +15,12 @@ Pilha::Pilha(){
 
 }
 
+// Destrutor
 Pilha::~Pilha(){
     
 }
 
+// Empilha
 void Pilha::Push(Item i){
 
     node *new_node = new node;
@@ -32,6 +35,8 @@ void Pilha::Push(Item i){
     this->lenght++;
 
 }
+
+// Desempilha
 Item Pilha::Retira(){
 
     node *nod = this->tail->previous;
@@ -49,6 +54,7 @@ Item Pilha::Retira(){
 
 }
 
+// Verifica se pilha está vazia
 bool Pilha::is_empty(){
     return this->lenght == 0;
 }
